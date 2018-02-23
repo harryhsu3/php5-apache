@@ -12,8 +12,9 @@ RUN apt-get update && apt-get install -y libmcrypt-dev wget openssl libssl-dev \
     && ./configure \
     && make \
     && cp modules/xdebug.so /usr/local/lib/php/extensions/no-debug-non-zts-20131226 \
-    && echo -e 'zend_extension = /usr/local/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so\ndate.timezone=Asia/Taipei' > /usr/local/etc/php/php.ini \
     && rm -rf /tmp/* \
     && apt-get clean
+
+ADD php.ini /usr/local/etc/php/
 
 EXPOSE 80
